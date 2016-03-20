@@ -1,0 +1,77 @@
+#Author: Ben McGahee
+#Title: Projectile Motion 
+#Date: 3/20/2016
+#Purpose:  This program plots the height vs. time and velocity vs. time graphs of a projectile
+#whose initial height is at 80 ft and initial velocity of 25 ft/sec, and displays some 
+#important information about the graphs such as total flight time, time of maximum height,
+maximum height, and velocity.  
+
+#Declare the value of gravity, initial velocity, and initial height for the projectile.  
+gravity = 32
+initialVelocity = 25
+initialHeight = 80
+
+#Set the values of a, b, and c for the quadratic equation.
+a = -0.5 * gravity
+b = initialVelocity
+c = initialHeight
+
+#Use the quadratic formula to find the total flight time of projectile.
+flightTime = (-b - sqrt(b * b - 4 * a * c)) / (2 * a)
+
+#Round flight time to 2 decimal places.
+roundFlightTime = round(flightTime, 2)
+
+#time vector sets the scale for the time axis (x-axis) with 0.1 increments.
+time = seq(0, roundFlightTime, 0.1)
+
+#This is the quadratic equation for height of projectile.
+#This is a vector that stores all of the heights during the entire flight.
+height = a * time * time + b * time + c
+
+#This is the linear equation for velocity of projectile.
+velocity = 2 * a * time + b
+
+#Time of maximum height is t = -b / 2a, rounded to two decimal places.  
+maxHeightTime = round(-1 * b / (2 * a), 2)
+
+#This is maximum height.
+maxHeight = max(height)
+--------------------------------------------------------------------------------------------------------------------------------------
+Output #1: Height vs. Time graph
+
+#Plots the Height vs. Time graph.
+plot(time, height, type = "l", xlab = "Time (seconds)", ylab = "Height (feet)", 
+     main = "Projectile Motion: Height vs. Time", col.main = "green")
+
+#Prints the time vector.
+print("Time:")
+print(time)
+
+Prints the height vector.
+print("Height:")
+print(height)
+--------------------------------------------------------------------------------------------------------------------------------------
+Output #2: Velocity vs. Time graph
+
+#Plots the Velocity vs. Time graph.
+plot(time, velocity, type = "l", xlab = "Time (seconds)", ylab = "Velocity (feet / second)",
+     main = "Projectile Motion: Velocity vs. Time", col.main = "red")
+
+#Prints the velocity vector.
+print("Velocity:")
+print(velocity)
+
+#Prints the time of maximum height.
+print("Time of Maximum Height:")
+print(maxHeightTime)
+
+#Prints the maximum height.
+print("Maximum Height:")
+print(maxHeight)
+
+#Prints the total flight time.
+print("Flight Time:")
+print(roundFlightTime)
+
+
