@@ -1,0 +1,60 @@
+#Author: Ben McGahee
+#Title:  Acme vs. Top Star
+#Date: 3/21/2016
+#Purpose: This is an exercise on creating data frames for two fictitious software companies
+#Acme Software Company and Top Star Software Solutions, calculating their minimum, maximum, and average
+#salaries, and printing out the results to compare the two companies.  
+
+#Create data frame for Acme Software Company.
+AcmeEmployees = data.frame(list(Name = c("John Smith", "Nancy Bridges", "Hal Johnson", "Trent Atkins", "Ashley Wilson", "Robert Grove", "Tiffany Unger", "Brick Ward", "Sami Styles", "Victor Jackson"),
+                                       Title = c("Developer", "Programmer", "Networker", "Database Administrator", "Developer", "Programmer", "Manager", "Tester", "Network Administrator", "Programmer"),
+                                        Salary = c(45000, 42000, 60000, 85000, 51000, 55000, 70000, 33000, 84000, 66000)))
+
+
+#Create data frame for Top Star Software Solutions.
+TopStarEmployees = data.frame(list(Name = c("Blake Rogers", "Greg Justice", "Rob Howell", "Matt Larsen", "Jack Bryceson", "Rick Davis", "Peter Thomas", "Brittany Miles", "Deandra Sims", "Guy Younger"),
+                                   Title = c("Programmer", "Developer", "Networker", "Tester", "Manager", "Database Administrator", "Programmer", "Tester", "Network Administrator", "Programmer"),
+                                   Salary = c(55000, 52000, 63000, 34000, 47000, 70000, 60000, 58000, 85000, 40000)))
+
+
+#Get the minimum, maximum, and average salaries from Acme. 
+acmeMinSalary = min(AcmeEmployees$Salary)
+acmeMaxSalary = max(AcmeEmployees$Salary)
+acmeAvgSalary = mean(AcmeEmployees$Salary)
+
+#Get the minimum, maximum, and average salaries from Top Star.
+topStarMinSalary = min(TopStarEmployees$Salary)
+topStarMaxSalary = max(TopStarEmployees$Salary)
+topStarAvgSalary = mean(TopStarEmployees$Salary)
+
+#Create a data frame to compare the minimum, maximum, and average salaries of both companies.
+compareSalaries = data.frame(list(Software_Company = c("Acme Software Company", "Top Star Software Solutions"),
+                                  Minimum_Salary = c(acmeMinSalary, topStarMinSalary),
+                                  Maximum_Salary = c(acmeMaxSalary, topStarMaxSalary),
+                                  Average_Salary = c(acmeAvgSalary, topStarAvgSalary)))
+
+#Print the Acme data frame.
+print("Acme Software Company:")
+
+#Order Acme data frame by salary in ascending order.
+sortData(AcmeEmployees, AcmeEmployees$Salary)
+
+#Print the Top Star data frame.
+print("Top Star Software Solutions:")
+
+#Order data frame by salary in ascending order.
+sortData(TopStarEmployees, TopStarEmployees$Salary)
+
+#Print the Company CompariSon data frame.  
+print("Company Comparison:")
+print(compareSalaries)
+
+#This function takes in two inputs, which are a data frame and column name,
+#and sorts the data in the specified column in ascending order.
+sortData = function(data_frame, column_name){
+  sortColumn = order(column_name)
+  column_name[sortColumn]
+  data_frame[sortColumn, ]
+}
+
+
