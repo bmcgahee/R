@@ -48,7 +48,7 @@ plot(time, height, type = "l", xlab = "Time (seconds)", ylab = "Height (feet)",
 print("Time:")
 print(time)
 
-Prints the height vector.
+#Prints the height vector.
 print("Height:")
 print(height)
 --------------------------------------------------------------------------------------------------------------------------------------
